@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>런쥔 포토카드</title>
+  <style>
+    body {
+      background-color: #ffdc3c;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      padding: 10px;
+    }
+    .card {
+      position: relative;
+      cursor: pointer;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      transition: opacity 0.3s ease;
+    }
+    .card.checked img {
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+  <h1>런쥔 포토카드</h1>
+  <div class="grid" id="photocard-grid">
+    <!-- 포토카드 이미지들이 여기에 표시됨 -->
+  </div>
+
+  <script>
+    const photocards = [
+      { filename: "dream_01.png" },
+      { filename: "dream_02.png" },
+      { filename: "dream_03.png" },
+      { filename: "dream_04.png" },
+      { filename: "dream_05.png" },
+      { filename: "dream_06.png" },
+      { filename: "dream_07.png" },
+      { filename: "dream_08.png" },
+      { filename: "dream_09.png" },
+      { filename: "dream_10.png" },
+      { filename: "dream_11.png" },
+      { filename: "dream_12.png" },
+      { filename: "others_01.png" },
+      { filename: "others_02.png" },
+      { filename: "others_03.png" },
+      { filename: "others_04.png" },
+      { filename: "others_05.png" },
+      { filename: "others_06.png" },
+      { filename: "others_07.png" },
+      { filename: "others_08.png" },
+      { filename: "others_09.png" },
+      { filename: "others_10.png" },
+      { filename: "others_11.png" },
+      { filename: "others_12.png" }
+    ];
+
+    const grid = document.getElementById("photocard-grid");
+    photocards.forEach(card => {
+      const cardDiv = document.createElement("div");
+      cardDiv.classList.add("card");
+      const img = document.createElement("img");
+      img.src = "images/" + card.filename;
+      img.alt = card.filename;
+      cardDiv.appendChild(img);
+      cardDiv.addEventListener("click", () => {
+        cardDiv.classList.toggle("checked");
+      });
+      grid.appendChild(cardDiv);
+    });
+  </script>
+</body>
+</html>
